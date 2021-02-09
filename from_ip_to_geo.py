@@ -19,9 +19,13 @@ def from_ip_to_geo(filename):
         respose = reader.city(key)
 
         for i in range(1):
+
             if value[i][3] is False:
+
                 folium.Marker(location=[respose.location.latitude, respose.location.longitude], popup=respose.subdivisions.most_specific.name, icon=folium.Icon(color="red")).add_to(map)
+
             else:
+
                 folium.Marker(location=[respose.location.latitude, respose.location.longitude], popup=respose.subdivisions.most_specific.name, icon=folium.Icon(color="blue")).add_to(map)
 
     map.save('C://Users//mmmel//Desktop//index.html')

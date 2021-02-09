@@ -4,6 +4,8 @@ from os import path
 
 from datetime import datetime, timedelta
 
+import time
+
 dateTimeObj = datetime.now()
 
 timestampStr = dateTimeObj.strftime("%d-%b-%Y-%H-%M")
@@ -31,7 +33,7 @@ def check_if_2_dataframe_have_same_element():
         nodes_disc = data_frame_2[~data_frame_2.id.isin(common.id)]
     for row, value in nodes_disc.iterrows():
 
-        lista_day_in_day_out.append([value[4], value[5]])
+        lista_day_in_day_out.append([value[4], int(time.time())])
 
     nodes_disc.insert(loc=6, column='day_in_day_out', value=lista_day_in_day_out)
 
