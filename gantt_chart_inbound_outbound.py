@@ -1,4 +1,6 @@
-from from_csv_to_dict import from_csv_to_dict
+from dict_from_csv_in import dict_from_csv_in
+
+from dict_from_csv_out import dict_from_csv_out
 
 import numpy as np
 
@@ -22,13 +24,17 @@ dict_to_plot = {}
 
 def gantt_chart_between_date(filename,data_1, data_2):
 
-    dict_from_dates = from_csv_to_dict(filename)
+    #dict_from_dates = from_csv_to_gant_chartt(filename)
+
+    #dict_in= dict_from_csv_in(filename)
+
+    dict_out= dict_from_csv_out(filename)
 
     date_time_obj_1 = datetime.datetime.strptime(data_1, '%Y-%m-%d')
 
     date_time_obj_2 = datetime.datetime.strptime(data_2, '%Y-%m-%d')
 
-    for key, value in dict_from_dates.items():
+    for key, value in dict_out.items():
 
         for i in range(len(value)):
 
@@ -67,11 +73,11 @@ def gantt_chart_between_date(filename,data_1, data_2):
 
     plt.yticks(y_pos, reversed(dict_to_plot.keys()))
 
-    red_patch = mpatches.Patch(color='red', label='outbound')
+    #red_patch = mpatches.Patch(color='red', label='outbound')
 
-    blue_patch = mpatches.Patch(color='blue', label='inbound')
+    #blue_patch = mpatches.Patch(color='blue', label='inbound')
 
-    plt.legend(handles=[red_patch, blue_patch])
+    #plt.legend(handles=[red_patch, blue_patch])
 
     # plot the gantt chart from the dict of elements
 
@@ -80,16 +86,8 @@ def gantt_chart_between_date(filename,data_1, data_2):
         nrow = nrow - 1
 
         for i in range(len(value)):
-
-            # inbound
-
-            if value[i][3] is True:
-
-                plt.broken_barh([(value[i][0], value[i][2])], (nrow, width))
-
-            else:
-
-                plt.broken_barh([(value[i][0], value[i][2])], (nrow, width), facecolors="tab:red")
+            
+            plt.broken_barh([(value[i][0], value[i][2])], (nrow, width))
 
     plt.show()
 

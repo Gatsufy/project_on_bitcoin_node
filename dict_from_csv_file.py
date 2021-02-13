@@ -1,9 +1,5 @@
 import pandas as pd
 
-import datetime
-
-from pprint import pprint
-
 dict_from_csv = {}
 
 def to_list(s):
@@ -13,7 +9,7 @@ def to_list(s):
     return [int(n) for n in lista]
 
 
-def from_csv_to_gant_chartt(filename):
+def dict_to_csv_file(filename):
 
     data_frame_csv = pd.read_csv(filename)
 
@@ -57,44 +53,7 @@ def from_csv_to_gant_chartt(filename):
 
                 [start, finish, finish - start, row['inbound']])
 
-    totale_giorni_inbound = 0
+    return dict_from_csv
 
-    number_key_inbound = 0
 
-    totale_giorni_outbound = 0
-
-    number_key_outbound = 0
-            
-    for idx, row in data_frame_csv.iterrows():
-        
-        if row['inbound'] is True:
-
-            number_key_inbound = number_key_inbound+1
-            
-            row['day_in_day_out'] = to_list(row['day_in_day_out'])
-
-            totale_giorni_inbound = totale_giorni_inbound + (row['day_in_day_out'][1]-row['day_in_day_out'][0])
-
-        else:
-            number_key_outbound = number_key_outbound+1
-
-            row['day_in_day_out'] = to_list(row['day_in_day_out'])
-
-            totale_giorni_outbound = totale_giorni_outbound + (row['day_in_day_out'][1]-row['day_in_day_out'][0])
-
-    media_totale_giorni_inbound = totale_giorni_inbound/number_key_inbound
-
-    media_totale_giorni_outbound = totale_giorni_outbound/number_key_outbound
-
-    pprint("media tempo connessione nodi inbound")
-
-    pprint(str(datetime.timedelta(seconds=media_totale_giorni_inbound)))
-
-    pprint("media tempo connessione nodi outbound")
-
-    pprint(str(datetime.timedelta(seconds=media_totale_giorni_outbound)))
-
-    return totale_giorni_inbound
-    
-
-from_csv_to_gant_chartt("C://Users//mmmel//Desktop//nodes_disc.csv")
+dict_to_csv_file("C://Users//mmmel//Desktop//nodes_disc.csv")

@@ -31,6 +31,7 @@ def check_if_2_dataframe_have_same_element():
         common = data_frame_2.merge(data_frame_10_mins_after, on=["id"])
 
         nodes_disc = data_frame_2[~data_frame_2.id.isin(common.id)]
+        
     for row, value in nodes_disc.iterrows():
 
         lista_day_in_day_out.append([value[4], int(time.time())])

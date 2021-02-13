@@ -2,12 +2,6 @@ import pandas as pd
 
 dict_from_csv = {}
 
-dict_inbound = {}
-
-dict_outboud = {}
-
-lista_dict = []
-
 def to_list(s):
 
     lista = s.replace('[', '').replace(']', '').split(',')
@@ -15,7 +9,7 @@ def to_list(s):
     return [int(n) for n in lista]
 
 
-def from_csv_to_gant_chartt(filename):
+def from_csv_to_dict(filename):
 
     data_frame_csv = pd.read_csv(filename)
 
@@ -36,6 +30,7 @@ def from_csv_to_gant_chartt(filename):
     data_frame_csv = data_frame_csv.reset_index(drop=True)
 
     # insert element from a dataframe in a dict
+
     for idx, row in data_frame_csv.iterrows():
 
         # create a key for a dict for all the Ip with inbound true that is not in dict_from_csv_in.keys()
@@ -72,4 +67,4 @@ def from_csv_to_gant_chartt(filename):
     return dict_from_csv
 
 
-from_csv_to_gant_chartt("C://Users//mmmel//Desktop//nodes_disc.csv")
+from_csv_to_dict("C://Users//mmmel//Desktop//nodes_disc.csv")
