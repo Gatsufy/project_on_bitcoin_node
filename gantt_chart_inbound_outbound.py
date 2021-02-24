@@ -18,9 +18,7 @@ date_1 = input("Inserisci la prima data nel formato YYYY-MM-DD")
 
 date_2 = input(" Inserisci la seconda data nel formato YYYY-MM-DD")
 
-
 dict_to_plot = {}
-
 
 def gantt_chart_between_date(filename,data_1, data_2):
 
@@ -63,21 +61,13 @@ def gantt_chart_between_date(filename,data_1, data_2):
     # number of keys in the dict
     nrow = len(dict_to_plot.keys())
 
-    pprint(nrow)
-
     y_pos = np.arange(nrow)
 
     width = 0.6
 
-    plt.tick_params(axis='y', labelsize=4)
+    plt.tick_params(axis='y', labelsize=8)
 
     plt.yticks(y_pos, reversed(dict_to_plot.keys()))
-
-    #red_patch = mpatches.Patch(color='red', label='outbound')
-
-    #blue_patch = mpatches.Patch(color='blue', label='inbound')
-
-    #plt.legend(handles=[red_patch, blue_patch])
 
     # plot the gantt chart from the dict of elements
 

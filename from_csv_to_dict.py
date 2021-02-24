@@ -1,5 +1,7 @@
 import pandas as pd
 
+from pprint import pprint
+
 dict_from_csv = {}
 
 def to_list(s):

@@ -22,6 +22,7 @@ def dict_to_csv_file(filename):
     # insert element from a dataframe in a dict
     for idx, row in data_frame_csv.iterrows():
 
+
         # create a key for a dict for all the Ip with inbound true that is not in dict_from_csv_in.keys()
         if row['Ip'] not in dict_from_csv:
 
@@ -52,6 +53,7 @@ def dict_to_csv_file(filename):
             dict_from_csv[row['Ip']].append(
 
                 [start, finish, finish - start, row['inbound']])
+
 
     return dict_from_csv
 

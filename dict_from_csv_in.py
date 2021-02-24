@@ -1,4 +1,4 @@
-from from_csv_gant_chartt import to_list
+from from_csv_to_dict import to_list
 
 import pandas as pd
 
@@ -15,6 +15,8 @@ def dict_from_csv_in(filename):
 
     del data_frame_csv["addr"]
 
+    print(len(data_frame_csv))
+
     for idx, row in data_frame_csv.iterrows():
 
         row['day_in_day_out'] = to_list(row['day_in_day_out'])
@@ -24,6 +26,8 @@ def dict_from_csv_in(filename):
             data_frame_csv = data_frame_csv.drop(index=idx, axis=0)
 
     data_frame_csv = data_frame_csv.reset_index(drop=True)
+
+    print(len(data_frame_csv))
     # insert element from a dataframe in a dict
     for idx, row in data_frame_csv.iterrows():
 
@@ -63,8 +67,7 @@ def dict_from_csv_in(filename):
                 [start, finish, finish - start, row['inbound']])
 
     print(len(dict_in.keys()))
-
-
+    
     return dict_in
 
 

@@ -13,7 +13,7 @@ def from_json_to_csv():
     
     data_frame = pd.read_json("C://Users//mmmel//Desktop//bitcoin_peer.json")
 
-    data_frame.to_json("C://Users//mmmel//Desktop//" + timestampStr + ".json")
+    data_frame.to_json("C://Users//mmmel//Desktop//" + timestampStr + ".json",indent=4)
 
     new_dataframe = pd.DataFrame(data_frame, columns=['id', 'inbound', 'addr', 'conntime'])
 

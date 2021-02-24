@@ -4,17 +4,19 @@ import folium
 
 from folium import FeatureGroup, LayerControl
 
+from folium.plugins import MarkerCluster
+
 import webbrowser
 
 from pprint import pprint
 
-from from_csv_gant_chartt import from_csv_to_gant_chartt
+from from_csv_to_dict import from_csv_to_dict
 
 def from_ip_to_geo(filename):
 
     reader = geoip2.database.Reader('C://Users//mmmel//Desktop//GeoLite2-City_20201229//GeoLite2-City.mmdb')
 
-    dict_from_csv = from_csv_to_gant_chartt(filename)
+    dict_from_csv = from_csv_to_dict(filename)
 
     respose = reader.city('82.61.121.164')
 
@@ -29,6 +31,12 @@ def from_ip_to_geo(filename):
 
         respose=reader.city(key)
 
+        pprint(respose.city)
+
+        pprint(respose.location.latitude)
+
+        pprint(respose.location.longitude)
+        
         for i in range(1):
 
             if value[i][3] is False:
@@ -38,7 +46,6 @@ def from_ip_to_geo(filename):
             else:
 
                 folium.Marker(location=[respose.location.latitude, respose.location.longitude], popup=respose.subdivisions.most_specific.name, icon=folium.Icon(color="blue")).add_to(inbound_node)
-    
 
 
     inbound_node.add_to(map)

@@ -28,6 +28,8 @@ def gantt_chart_between_date(filename,data_1, data_2):
 
     date_time_obj_2 = datetime.datetime.strptime(data_2, '%Y-%m-%d')
 
+    
+
     for key, value in dict_from_dates.items():
 
         for i in range(len(value)):
@@ -57,13 +59,11 @@ def gantt_chart_between_date(filename,data_1, data_2):
     # number of keys in the dict
     nrow = len(dict_to_plot.keys())
 
-    pprint(nrow)
-
     y_pos = np.arange(nrow)
 
     width = 0.6
 
-    plt.tick_params(axis='y', labelsize=4)
+    plt.tick_params(axis='y', labelsize=8)
 
     plt.yticks(y_pos, reversed(dict_to_plot.keys()))
 
@@ -89,7 +89,7 @@ def gantt_chart_between_date(filename,data_1, data_2):
 
             else:
 
-                plt.broken_barh([(value[i][0], value[i][2])], (nrow, width), facecolors="tab:red")
+                plt.broken_barh([(value[i][0], value[i][2])], (nrow, width))
 
     plt.show()
 

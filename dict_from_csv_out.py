@@ -1,4 +1,4 @@
-from from_csv_gant_chartt import to_list
+from from_csv_to_dict import to_list
 
 from pprint import pprint
 
@@ -66,7 +66,6 @@ def dict_from_csv_out(filename):
                 [start, finish, finish - start, row['inbound']])
 
     print(len(dict_out.keys()))
-
 
     return dict_out
 
